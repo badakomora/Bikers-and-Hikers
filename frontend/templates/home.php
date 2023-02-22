@@ -135,16 +135,23 @@ header("refresh: 0, ../");
                 <!-- Post /////-->
 
                 <!--- \\\\\\\Post-->
+                <?php
+                include '../includes/dbconfiq.php';
+                $query = mysqli_query($con, "SELECT * 
+                FROM posts 
+                INNER JOIN users on users.id = posts.user_id");
+                while($row = mysqli_fetch_array($query)){
+                ?>
                 <div class="card gedf-card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="mr-2">
-                                    <img class="rounded-circle" width="45" height="45" src="https://99brides.com/wp-content/uploads/2022/07/iScreen-Shoter-2022-07-06-142753.957.jpg" alt="">
+                                    <img class="rounded-circle" width="45" height="45" src="../forms/img/avator.jpg" alt="">
                                 </div>
                                 <div class="ml-2">
-                                    <div class="h5 m-0"><?php echo $_SESSION['username'];?></div>
-                                    <div class="h7 text-muted"><?php echo $_SESSION['email'];?></div>
+                                    <div class="h5 m-0"><?php echo $row['username'];?></div>
+                                    <div class="h7 text-muted"><?php echo $row['email'];?></div>
                                 </div>
                             </div>
                             <div>
@@ -164,15 +171,13 @@ header("refresh: 0, ../");
 
                     </div>
                     <div class="card-body">
-                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>10 min ago</div>
+                        <img class="img-fluid" src="">
+                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i><?php echo $row['timer'];?></div>
                         <a class="card-link" href="#">
-                            <h5 class="card-title text-secondary"><b>Lorem ipsum dolor sit amet, consectetur adip.</b></h5>
+                            <h5 class="card-title text-secondary"><b><?php echo $row['title'];?></b></h5>
                         </a>
 
-                        <p class="card-text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo recusandae nulla rem eos ipsa praesentium esse magnam nemo dolor
-                            sequi fuga quia quaerat cum, obcaecati hic, molestias minima iste voluptates.
-                        </p>
+                        <p class="card-text"><?php echo $row['message'];?></p>
                     </div>
                     <div class="card-footer">
                         <a href="#" class="card-link text-secondary"><i class="fa fa-gittip"></i> Like</a>
@@ -180,6 +185,7 @@ header("refresh: 0, ../");
                         <a href="#" class="card-link text-secondary"><i class="fa fa-mail-forward"></i> Share</a>
                     </div>
                 </div>
+                <?php }?>
                 <!-- Post /////-->
 
 
