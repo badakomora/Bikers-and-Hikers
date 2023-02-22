@@ -98,7 +98,7 @@ header("refresh: 0, ../");
                                     a publication</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" id="images-tab" data-toggle="tab" role="tab" aria-controls="images" aria-selected="false" href="#images">Images</a>
+                                <a class="nav-link text-dark" id="images-tab" data-toggle="tab" role="tab" aria-controls="images" aria-selected="false" href="#images">Image</a>
                             </li>
                         </ul>
                     </div>
@@ -137,22 +137,26 @@ header("refresh: 0, ../");
                 <!--- \\\\\\\Post-->
                 <?php
                 include '../includes/dbconfiq.php';
-                $query = mysqli_query($con, "SELECT * 
-                FROM posts 
-                INNER JOIN users on users.id = posts.user_id");
+                $query = mysqli_query($con, "SELECT * FROM posts");
                 while($row = mysqli_fetch_array($query)){
                 ?>
                 <div class="card gedf-card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex justify-content-between align-items-center">
+                                <?php
+                                    include '../includes/dbconfiq.php';
+                                    $query2 = mysqli_query($con, "SELECT * FROM users WHERE users.id = '".$row['user_id']."'");
+                                    while($row2 = mysqli_fetch_array($query2)){
+                                ?>
                                 <div class="mr-2">
                                     <img class="rounded-circle" width="45" height="45" src="../forms//img/<?php echo $row['profile'];?>" alt="">
                                 </div>
                                 <div class="ml-2">
-                                    <div class="h5 m-0"><?php echo $row['username'];?></div>
-                                    <div class="h7 text-muted"><?php echo $row['email'];?></div>
-                                </div>
+                                
+
+                                    <div class="h5 m-0"><?php echo $row2['username'];?></div>
+                                    <div class="h7 text-muted"><?php echo $row2['email'];                                </div>
                             </div>
                             <div>
                                 <div class="dropdown">
