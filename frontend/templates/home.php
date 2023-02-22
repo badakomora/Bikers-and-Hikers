@@ -69,7 +69,7 @@ header("refresh: 0, ../");
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-body">
-                        <div class="h5"><?php echo $_SESSION['email'];?></div>
+                        <div class="h5"><?php echo $_SESSION['name'];?></div>
                         <div class="h7 text-muted">My Bio</div>
                         <div class="h7">Some quick example text to build on the card title and make up the bulk of the card's content.
                         </div>
@@ -123,18 +123,7 @@ header("refresh: 0, ../");
                         </div>
                         <div class="btn-toolbar justify-content-between">
                             <div class="btn-group">
-                                <button type="submit" class="btn btn-secondary">share</button>
-                            </div>
-                            <div class="btn-group">
-                                <button id="btnGroupDrop1" type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    <i class="fa fa-globe"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
-                                    <a class="dropdown-item" href="#"><i class="fa fa-globe"></i> Public</a>
-                                    <a class="dropdown-item" href="#"><i class="fa fa-users"></i> Friends</a>
-                                    <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Just me</a>
-                                </div>
+                                <button type="submit" class="btn btn-secondary">Create Post </button>
                             </div>
                         </div>
                     </div>
@@ -147,17 +136,17 @@ header("refresh: 0, ../");
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="mr-2">
-                                    <img class="rounded-circle" width="45" height="45" src="https://pixlr.com/images/index/remove-bg.webp" alt="">
+                                    <img class="rounded-circle" width="45" height="45" src="https://i.pinimg.com/originals/d1/4c/4a/d14c4aabe18f1bf5844289cb39e9f02b.jpg" alt="">
                                 </div>
                                 <div class="ml-2">
-                                    <div class="h5 m-0"><?php echo $_SESSION['email'];?></div>
-                                    <div class="h7 text-muted"><?php echo $_SESSION['name'];?></div>
+                                    <div class="h5 m-0"><?php echo $_SESSION['name'];?></div>
+                                    <div class="h7 text-muted"><?php echo $_SESSION['email'];?></div>
                                 </div>
                             </div>
                             <div>
                                 <div class="dropdown">
                                     <button class="btn btn-link dropdown-toggle" type="button" id="gedf-drop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fa fa-ellipsis-h"></i>
+                                        <i class="fa fa-ellipsis-h text-dark"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="gedf-drop1">
                                         <div class="h6 dropdown-header">Configuration</div>
