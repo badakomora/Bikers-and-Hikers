@@ -137,21 +137,28 @@ header("refresh: 0, ../");
                 <!--- \\\\\\\Post-->
                 <?php
                 include '../includes/dbconfiq.php';
-                $query = mysqli_query($con, "SELECT * 
-                FROM posts 
-                INNER JOIN users on users.id = posts.user_id");
+                $query = mysqli_query($con, "SELECT * FROM posts");
                 while($row = mysqli_fetch_array($query)){
                 ?>
                 <div class="card gedf-card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex justify-content-between align-items-center">
+                                <?php
+                                    include '../includes/dbconfiq.php';
+                                    $query2 = mysqli_query($con, "SELECT * FROM users WHERE users.id = '".$row['user_id']."'");
+                                    while($row2 = mysqli_fetch_array($query2)){
+                                ?>
                                 <div class="mr-2">
-                                    <img class="rounded-circle" width="45" height="45" src="../forms/img/<?php echo $row['profile'];?>" alt="">
+                                    <img class="rounded-circle" width="45" height="45" src="../forms/img/<?php echo $row2['profile'];?>" alt="">
                                 </div>
                                 <div class="ml-2">
-                                    <div class="h5 m-0"><?php echo $row['username'];?></div>
-                                    <div class="h7 text-muted"><?php echo $row['email'];?></div>
+                                
+
+                                    <div class="h5 m-0"><?php echo $row2['username'];?></div>
+                                    <div class="h7 text-muted"><?php echo $row2['email'];?></div>
+
+                                <?php }?>
                                 </div>
                             </div>
                             <div>
@@ -171,7 +178,7 @@ header("refresh: 0, ../");
 
                     </div>
                     <div class="card-body">
-                        <img class="img-fluid" src="../forms//img/<?php echo $row['file'];?>">
+                        <img class="img-fluid" src="../forms/img/<?php echo $row['file'];?>">
                         <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i><?php echo $row['timer'];?></div>
                         <a class="card-link" href="#">
                             <h5 class="card-title text-secondary"><b><?php echo $row['title'];?></b></h5>
