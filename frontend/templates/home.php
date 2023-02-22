@@ -103,11 +103,14 @@ header("refresh: 0, ../");
                         </ul>
                     </div>
                     <div class="card-body">
+                        <form action="" method="post">
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
                                 <div class="form-group">
-                                    <label class="sr-only" for="message">post</label>
-                                    <textarea class="form-control" id="message" rows="3" placeholder="What are you thinking?"></textarea>
+                                    <label for="title" class="sr-only">Post Title</label>
+                                    <input type="text" class="form-control m-1" placeholder="post title">
+                                    <label class="sr-only" for="message">Post message</label>
+                                    <textarea class="form-control m-1" id="message" rows="3" placeholder="What are you thinking?"></textarea>
                                 </div>
 
                             </div>
@@ -126,6 +129,7 @@ header("refresh: 0, ../");
                                 <button type="submit" class="btn btn-secondary">Create Post </button>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
                 <!-- Post /////-->
@@ -145,6 +149,7 @@ header("refresh: 0, ../");
                             </div>
                             <div>
                                 <div class="dropdown">
+                                    <button class="btn btn-dark">Follow</button>
                                     <button class="btn btn-link dropdown-toggle" type="button" id="gedf-drop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fa fa-ellipsis-h text-dark"></i>
                                     </button>
