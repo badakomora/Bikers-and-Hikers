@@ -136,7 +136,7 @@ header("refresh: 0, ../");
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="mr-2">
-                                    <img class="rounded-circle" width="45" height="45" src="https://i.pinimg.com/originals/d1/4c/4a/d14c4aabe18f1bf5844289cb39e9f02b.jpg" alt="">
+                                    <img class="rounded-circle" width="45" height="45" src="https://99brides.com/wp-content/uploads/2022/07/iScreen-Shoter-2022-07-06-142753.957.jpg" alt="">
                                 </div>
                                 <div class="ml-2">
                                     <div class="h5 m-0"><?php echo $_SESSION['name'];?></div>
