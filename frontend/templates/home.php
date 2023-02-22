@@ -150,13 +150,16 @@ header("refresh: 0, ../");
                                     while($row2 = mysqli_fetch_array($query2)){
                                 ?>
                                 <div class="mr-2">
-                                    <img class="rounded-circle" width="45" height="45" src="../forms//img/<?php echo $row['profile'];?>" alt="">
+                                    <img class="rounded-circle" width="45" height="45" src="../forms/img/<?php echo $row2['profile'];?>" alt="">
                                 </div>
                                 <div class="ml-2">
                                 
 
                                     <div class="h5 m-0"><?php echo $row2['username'];?></div>
-                                    <div class="h7 text-muted"><?php echo $row2['email'];                                </div>
+                                    <div class="h7 text-muted"><?php echo $row2['email'];?></div>
+
+                                <?php }?>
+                                </div>
                             </div>
                             <div>
                                 <div class="dropdown">
