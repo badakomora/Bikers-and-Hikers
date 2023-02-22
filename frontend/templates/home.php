@@ -98,7 +98,7 @@ header("refresh: 0, ../");
                                     a publication</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" id="images-tab" data-toggle="tab" role="tab" aria-controls="images" aria-selected="false" href="#images">Images</a>
+                                <a class="nav-link text-dark" id="images-tab" data-toggle="tab" role="tab" aria-controls="images" aria-selected="false" href="#images">Image</a>
                             </li>
                         </ul>
                     </div>
