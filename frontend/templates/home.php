@@ -103,21 +103,21 @@ header("refresh: 0, ../");
                         </ul>
                     </div>
                     <div class="card-body">
-                        <form action="" method="post">
+                        <form action="../forms/action.php" method="post" enctype="multipart/form-data">
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
                                 <div class="form-group">
                                     <label for="title" class="sr-only">Post Title</label>
-                                    <input type="text" class="form-control m-1" placeholder="post title">
+                                    <input type="text" name="title" class="form-control m-1" placeholder="post title">
                                     <label class="sr-only" for="message">Post message</label>
-                                    <textarea class="form-control m-1" id="message" rows="3" placeholder="What are you thinking?"></textarea>
+                                    <textarea class="form-control m-1" name="message" id="message" rows="3" placeholder="What are you thinking?"></textarea>
                                 </div>
 
                             </div>
                             <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">
                                 <div class="form-group">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile">
+                                        <input type="file" name="file" class="custom-file-input" id="customFile">
                                         <label class="custom-file-label" for="customFile">Upload image</label>
                                     </div>
                                 </div>
@@ -126,7 +126,7 @@ header("refresh: 0, ../");
                         </div>
                         <div class="btn-toolbar justify-content-between">
                             <div class="btn-group">
-                                <button type="submit" class="btn btn-secondary">Create Post </button>
+                                <button type="submit" name="postbtn" class="btn btn-secondary">Create Post </button>
                             </div>
                         </div>
                         </form>
@@ -154,10 +154,9 @@ header("refresh: 0, ../");
                                         <i class="fa fa-ellipsis-h text-dark"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="gedf-drop1">
-                                        <div class="h6 dropdown-header">Configuration</div>
                                         <a class="dropdown-item" href="#">Save</a>
-                                        <a class="dropdown-item" href="#">Hide</a>
-                                        <a class="dropdown-item" href="#">Report</a>
+                                        <a class="dropdown-item" href="#">Edit</a>
+                                        <a class="dropdown-item" href="#">Delete</a>
                                     </div>
                                 </div>
                             </div>

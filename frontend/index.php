@@ -8,6 +8,7 @@ if (isset($_POST['login'])) {
   
     $query = mysqli_query($con, "SELECT * FROM users where email = '$email'");
     $row = mysqli_fetch_assoc($query);
+    
     if ($row >= 1) {
       if (password_verify( $password, $row['password'])) {
         
