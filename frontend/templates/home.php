@@ -1,15 +1,23 @@
+<?php 
+session_start(); 
+if(!isset($_SESSION['email'])) {
+$msg = "Please Sign In Correctly or your Account will be De-activated Completely!";
+echo "<script type='text/javascript'>alert('$msg');</script>";
+header("refresh: 0, ../");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Bikers & Hikers</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css
-">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link href='https://fonts.googleapis.com/css?family=Dancing Script' rel='stylesheet'>
 </head>
 
 <style>body {
@@ -42,12 +50,12 @@
 <body>
        
 <nav class="navbar navbar-light bg-white">
-        <a href="#" class="navbar-brand">Bootsbook</a>
+        <a href="#" class="navbar-brand" style="font-family:'Dancing Script';font-size: 30px;"><b>Bikers & Hikers</b></a>
         <form class="form-inline">
             <div class="input-group">
                 <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-primary" type="button" id="button-addon2">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">
                         <i class="fa fa-search"></i>
                     </button>
                 </div>
@@ -61,10 +69,9 @@
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-body">
-                        <div class="h5">@LeeCross</div>
-                        <div class="h7 text-muted">Fullname : Miracles Lee Cross</div>
-                        <div class="h7">Developer of web applications, JavaScript, PHP, Java, Python, Ruby, Java, Node.js,
-                            etc.
+                        <div class="h5"><?php echo $_SESSION['email'];?></div>
+                        <div class="h7 text-muted">My Bio</div>
+                        <div class="h7">Some quick example text to build on the card title and make up the bulk of the card's content.
                         </div>
                     </div>
                     <ul class="list-group list-group-flush">
@@ -76,7 +83,7 @@
                             <div class="h6 text-muted">Following</div>
                             <div class="h5">6758</div>
                         </li>
-                        <li class="list-group-item">Vestibulum at eros</li>
+                        <li class="list-group-item"><a href="../includes/logout.php" class="text-dark text-decoration-none">Logout <i class="fa fa-sign-out"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -116,7 +123,7 @@
                         </div>
                         <div class="btn-toolbar justify-content-between">
                             <div class="btn-group">
-                                <button type="submit" class="btn btn-primary">share</button>
+                                <button type="submit" class="btn btn-secondary">share</button>
                             </div>
                             <div class="btn-group">
                                 <button id="btnGroupDrop1" type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
@@ -143,8 +150,8 @@
                                     <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
                                 </div>
                                 <div class="ml-2">
-                                    <div class="h5 m-0">@LeeCross</div>
-                                    <div class="h7 text-muted">Miracles Lee Cross</div>
+                                    <div class="h5 m-0"><?php echo $_SESSION['email'];?></div>
+                                    <div class="h7 text-muted"><?php echo $_SESSION['name'];?></div>
                                 </div>
                             </div>
                             <div>
@@ -227,12 +234,12 @@
                             Consectetur id molestias itaque facere? Hic!
                         </p>
                         <div>
-                            <span class="badge badge-primary">JavaScript</span>
-                            <span class="badge badge-primary">Android</span>
-                            <span class="badge badge-primary">PHP</span>
-                            <span class="badge badge-primary">Node.js</span>
-                            <span class="badge badge-primary">Ruby</span>
-                            <span class="badge badge-primary">Paython</span>
+                            <span class="badge badge-secondary">JavaScript</span>
+                            <span class="badge badge-secondary">Android</span>
+                            <span class="badge badge-secondary">PHP</span>
+                            <span class="badge badge-secondary">Node.js</span>
+                            <span class="badge badge-secondary">Ruby</span>
+                            <span class="badge badge-secondary">Paython</span>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -253,7 +260,7 @@
                                     <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
                                 </div>
                                 <div class="ml-2">
-                                    <div class="h5 m-0">@LeeCross</div>
+                                    <div class="h5 m-0"><?php echo $_SESSION['email'];?></div>
                                     <div class="h7 text-muted">Miracles Lee Cross</div>
                                 </div>
                             </div>

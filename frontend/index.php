@@ -12,6 +12,7 @@ if (isset($_POST['login'])) {
       if (password_verify( $password, $row['password'])) {
         
         $_SESSION['user_id'] = $row['id'];
+        $_SESSION['name'] = $row['name'];
         $_SESSION['email'] = $row['email'];
   
         header('refresh: 0, ./templates/home.php');
