@@ -147,7 +147,7 @@ header("refresh: 0, ../");
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="mr-2">
-                                    <img class="rounded-circle" width="45" height="45" src="../forms/img/<?php echo $row['profile'];?>" alt="">
+                                    <img class="rounded-circle" width="45" height="45" src="../forms//img/<?php echo $row['profile'];?>" alt="">
                                 </div>
                                 <div class="ml-2">
                                     <div class="h5 m-0"><?php echo $row['username'];?></div>
