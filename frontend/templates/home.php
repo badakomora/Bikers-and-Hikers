@@ -147,7 +147,7 @@ header("refresh: 0, ../");
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="mr-2">
-                                    <img class="rounded-circle" width="45" height="45" src="../forms/img/avator.jpg" alt="">
+                                    <img class="rounded-circle" width="45" height="45" src="../forms/img/<?php echo $row['profile'];?>" alt="">
                                 </div>
                                 <div class="ml-2">
                                     <div class="h5 m-0"><?php echo $row['username'];?></div>
@@ -171,7 +171,7 @@ header("refresh: 0, ../");
 
                     </div>
                     <div class="card-body">
-                        <img class="img-fluid" src="">
+                        <img class="img-fluid" src="../forms//img/<?php echo $row['file'];?>">
                         <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i><?php echo $row['timer'];?></div>
                         <a class="card-link" href="#">
                             <h5 class="card-title text-secondary"><b><?php echo $row['title'];?></b></h5>
