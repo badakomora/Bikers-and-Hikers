@@ -12,7 +12,7 @@ if (isset($_POST['login'])) {
       if (password_verify( $password, $row['password'])) {
         
         $_SESSION['user_id'] = $row['id'];
-        $_SESSION['name'] = $row['name'];
+        $_SESSION['username'] = $row['username'];
         $_SESSION['email'] = $row['email'];
   
         header('refresh: 0, ./templates/home.php');
@@ -33,6 +33,7 @@ if (isset($_POST['login'])) {
     
   }elseif (isset($_POST['Register'])){
    
+    $username = $_POST['username'];
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
@@ -44,7 +45,7 @@ if (isset($_POST['login'])) {
         echo "<script type='text/javascript'>alert('$msg');</script>";
         header("refresh: 0, ./"); 
     }else{
-        $insert = mysqli_query($con, "INSERT INTO users(email, password) VALUES('$email', '$password')");
+        $insert = mysqli_query($con, "INSERT INTO users(email, username, password) VALUES('$email', '$username', '$password')");
         $msg = "Registration Successful! Procced to sign in.";
         echo "<script type='text/javascript'>alert('$msg');</script>";
         header("refresh: 0, ./#SignIn"); 
@@ -94,6 +95,10 @@ if (isset($_POST['login'])) {
         <div class="col-md-5 p-5 shadow-sm border rounded-5 border-secondary bg-white">
             <h2 class="text-center mb-4 text-secondary">Sign Up Form</h2>
             <form method="Post" action="">
+            <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Username</label>
+                    <input type="username" name="username" class="form-control border border-secondary" id="exampleInputPassword1">
+                </div>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Email address</label>
                     <input type="email" name="email" class="form-control border border-secondary" id="exampleInputEmail1" aria-describedby="emailHelp">

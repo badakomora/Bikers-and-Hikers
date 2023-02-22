@@ -69,7 +69,7 @@ header("refresh: 0, ../");
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-body">
-                        <div class="h5"><?php echo $_SESSION['name'];?></div>
+                        <div class="h5"><?php echo $_SESSION['username'];?></div>
                         <div class="h7 text-muted">My Bio</div>
                         <div class="h7">Some quick example text to build on the card title and make up the bulk of the card's content.
                         </div>
@@ -143,7 +143,7 @@ header("refresh: 0, ../");
                                     <img class="rounded-circle" width="45" height="45" src="https://99brides.com/wp-content/uploads/2022/07/iScreen-Shoter-2022-07-06-142753.957.jpg" alt="">
                                 </div>
                                 <div class="ml-2">
-                                    <div class="h5 m-0"><?php echo $_SESSION['name'];?></div>
+                                    <div class="h5 m-0"><?php echo $_SESSION['username'];?></div>
                                     <div class="h7 text-muted"><?php echo $_SESSION['email'];?></div>
                                 </div>
                             </div>
@@ -190,11 +190,12 @@ header("refresh: 0, ../");
                 <div class="card gedf-card">
                     <div class="card-body">
                         <h5 class="card-title">Recommended for you</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        <hr>
+                        <h6 class="card-subtitle mb-2 text-muted">Lorem ipsum dolor sit amet, consectetur adip.</h6>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                             card's content.</p>
-                        <a href="#" class="card-link text-secondary">Card link</a>
-                        <a href="#" class="card-link text-secondary">Another link</a>
+                        <a href="#" class="card-link text-secondary">Refresh</a>
+                        <a href="#" class="card-link text-secondary">Share</a>
                     </div>
                 </div>
             </div>
