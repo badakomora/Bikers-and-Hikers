@@ -171,7 +171,7 @@ header("refresh: 0, ../");
 
                     </div>
                     <div class="card-body">
-                        <img class="img-fluid" src="../forms//img/<?php echo $row['file'];?>">
+                        <img class="img-fluid" src="../forms/img/<?php echo $row['file'];?>">
                         <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i><?php echo $row['timer'];?></div>
                         <a class="card-link" href="#">
                             <h5 class="card-title text-secondary"><b><?php echo $row['title'];?></b></h5>
