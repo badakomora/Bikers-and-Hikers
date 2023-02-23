@@ -46,12 +46,42 @@ if(isset($_POST['postbtn'])){
 
 
 
-}elseif(isset($_POST['editbtn'])){
+}elseif(isset($_POST['commentbtn'])){
 
+    $user_id = $_SESSION['user_id'];
+    $post_id = $_POST['postid'];
+    $message = $_POST['message'];
+    $select = mysqli_query($con, "SELECT * FROM posts WHERE message = '$message' And user_id = '$user_id'");
+    $selectrows = mysqli_num_rows($select);
+    if ($selectrows >= 1) {
+        $msg = "Comment already Exists!";
+        $uploadOk = 0;
+        echo "<script type='text/javascript'>
+        alert('$msg');
+        window.location = '../templates/comments.php?pid=$post_id';
+    </script>";
 
+    } else {
 
+        $query = mysqli_query($con, "INSERT INTO comments(post_id, user_id, message) VALUES('$post_id', '$user_id', '$message')");
+        if ($query == true) {
 
+            $msg = "Comment added successfully!";
+            $uploadOk = 1;
+            echo "<script type='text/javascript'>
+            alert('$msg');
+            window.location = '../templates/comments.php?pid=$post_id';
+        </script>";
+        } else {
 
+            $msg = "An error ocuured! File is too large.";
+            $uploadOk = 0;
+            echo "<script type='text/javascript'>
+            alert('$msg');
+            window.location = '../templates/comments.php?pid=$post_id';
+        </script>";
+        }
+    }
     
 
 }

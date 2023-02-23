@@ -140,13 +140,15 @@ header("refresh: 0, ../");
                 $query = mysqli_query($con, "SELECT * FROM posts");
                 while($row = mysqli_fetch_array($query)){
                 ?>
-                <div class="card gedf-card">
+                <div class="card gedf-card" id="<?php echo $row['id'];?>">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex justify-content-between align-items-center">
                                 <?php
                                     include '../includes/dbconfiq.php';
-                                    $query2 = mysqli_query($con, "SELECT * FROM users WHERE users.id = '".$row['user_id']."'");
+                                    $query2 = mysqli_query($con, "SELECT * 
+                                    FROM users 
+                                    WHERE users.id = '".$row['user_id']."'");
                                     while($row2 = mysqli_fetch_array($query2)){
                                 ?>
                                 <div class="mr-2">
@@ -188,11 +190,14 @@ header("refresh: 0, ../");
                     </div>
                     <div class="card-footer">
                         <a href="#" class="card-link text-secondary"><i class="fa fa-gittip"></i> Like</a>
-                        <a href="#" class="card-link text-secondary"><i class="fa fa-comment"></i> Comment</a>
+                        <a href="./comments.php?pid=<?php echo $row['id'];?>" class="card-link text-secondary"><i class="fa fa-comment"></i> Comment</a>
                         <a href="#" class="card-link text-secondary"><i class="fa fa-mail-forward"></i> Share</a>
                     </div>
                 </div>
-                <?php }?>
+                <br>
+                <?php  }?>
+
+                
                 <!-- Post /////-->
 
 
