@@ -16,7 +16,7 @@ if (isset($_POST['login'])) {
         $_SESSION['username'] = $row['username'];
         $_SESSION['email'] = $row['email'];
   
-        header('refresh: 0, ./templates/dashboard.php');
+        header('refresh: 0, ./templates/users.php');
         $msg = "Login Access Granted. WELCOME!";
         echo "<script type='text/javascript'>alert('$msg');</script>";
 
