@@ -83,7 +83,7 @@ header("refresh: 0, ../");
                             <div class="h6 text-muted">Following</div>
                             <div class="h5">6758</div>
                         </li>
-                        <li class="list-group-item"><a href="../includes/logout.php" class="text-dark text-decoration-none">Logout <i class="fa fa-sign-out"></i></a></li>
+                        <li class="list-group-item"><a href="../../includes/logout.php" class="text-dark text-decoration-none">Logout <i class="fa fa-sign-out"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -103,7 +103,7 @@ header("refresh: 0, ../");
                         </ul>
                     </div>
                     <div class="card-body">
-                        <form action="../forms/action.php" method="post" enctype="multipart/form-data">
+                        <form action="../../includes/forms/action.php" method="post" enctype="multipart/form-data">
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
                                 <div class="form-group">
@@ -136,8 +136,8 @@ header("refresh: 0, ../");
 
                 <!--- \\\\\\\Post-->
                 <?php
-                include '../includes/dbconfiq.php';
-                $query = mysqli_query($con, "SELECT * FROM posts");
+                include '../../includes/dbconfiq.php';
+                $query = mysqli_query($con, "SELECT * FROM posts order by id desc");
                 while($row = mysqli_fetch_array($query)){
                 ?>
                 <div class="card gedf-card" id="<?php echo $row['id'];?>">
@@ -145,14 +145,13 @@ header("refresh: 0, ../");
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex justify-content-between align-items-center">
                                 <?php
-                                    include '../includes/dbconfiq.php';
                                     $query2 = mysqli_query($con, "SELECT * 
                                     FROM users 
                                     WHERE users.id = '".$row['user_id']."'");
                                     while($row2 = mysqli_fetch_array($query2)){
                                 ?>
                                 <div class="mr-2">
-                                    <img class="rounded-circle" width="45" height="45" src="../forms/img/<?php echo $row2['profile'];?>" alt="">
+                                    <img class="rounded-circle" width="45" height="45" src="../../includes/forms/img/<?php echo $row2['profile'];?>" alt="">
                                 </div>
                                 <div class="ml-2">
                                 
@@ -165,7 +164,10 @@ header("refresh: 0, ../");
                             </div>
                             <div>
                                 <div class="dropdown">
-                                    <button class="btn btn-dark">Follow</button>
+                                    <?php 
+                                    if($row['user_id'] == $_SESSION['user_id']){}else{?>
+                                        <button class="btn btn-dark">Follow</button>
+                                    <?php }?>
                                     <button class="btn btn-link dropdown-toggle" type="button" id="gedf-drop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fa fa-ellipsis-h text-dark"></i>
                                     </button>
@@ -180,7 +182,7 @@ header("refresh: 0, ../");
 
                     </div>
                     <div class="card-body">
-                        <img class="img-fluid" src="../forms/img/<?php echo $row['file'];?>">
+                        <img class="img-fluid" src="../../includes/forms/img/<?php echo $row['file'];?>">
                         <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i><?php echo $row['timer'];?></div>
                         <a class="card-link" href="#">
                             <h5 class="card-title text-secondary"><b><?php echo $row['title'];?></b></h5>
@@ -208,11 +210,17 @@ header("refresh: 0, ../");
                     <div class="card-body">
                         <h5 class="card-title">Recommended for you</h5>
                         <hr>
-                        <h6 class="card-subtitle mb-2 text-muted">Lorem ipsum dolor sit amet, consectetur adip.</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                            card's content.</p>
-                        <a href="#" class="card-link text-secondary">Refresh</a>
+                        <?php
+                        include '../../includes/dbconfiq.php';
+                        $query = mysqli_query($con, "SELECT * FROM posts ORDER BY RAND() LIMIT 1");
+                        while($row = mysqli_fetch_array($query)){
+                        ?>
+                        <h6 class="card-subtitle mb-2 text-muted"><?php echo $row['title'];?></h6>
+                        <p class="card-text"><?php echo $row['message'];?></p>
+                        <a href="" class="card-link text-secondary">Refresh</a>
                         <a href="#" class="card-link text-secondary">Share</a>
+
+                        <?php }?>
                     </div>
                 </div>
             </div>

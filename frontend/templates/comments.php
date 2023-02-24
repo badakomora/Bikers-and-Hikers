@@ -35,7 +35,7 @@ header("refresh: 0, ../");
                         </ul>
                     </div>
                     <div class="card-body">
-                        <form action="../forms/action.php" method="post">
+                        <form action="../../includes/forms/action.php" method="post">
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
                                 <div class="form-group">
@@ -73,14 +73,14 @@ If desired, the comments can also be hidden again.
 
     <h3>Comments</h3>
     <?php
-        include '../includes/dbconfiq.php';
+        include '../../includes/dbconfiq.php';
         $query = mysqli_query($con, "SELECT * FROM comments WHERE post_id = '".$_GET['pid']."'");
         if($num = mysqli_num_rows($query) >= 1){
         while($row = mysqli_fetch_array($query)){
     ?>
     <div class="d-flex align-items-center">
                                 <?php
-                                    include '../includes/dbconfiq.php';
+                                    include '../../includes/dbconfiq.php';
                                     $query2 = mysqli_query($con, "SELECT * 
                                     FROM users 
                                     WHERE users.id = '".$row['user_id']."'");
