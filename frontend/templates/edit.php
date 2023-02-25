@@ -90,54 +90,13 @@ header("refresh: 0, ../");
             <div class="col-md-6 gedf-main">
 
                 <!--- \\\\\\\Post-->
-                <div class="card gedf-card">
-                    <div class="card-header">
-                        <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active text-dark" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts" aria-selected="true">Make
-                                    a publication</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" id="images-tab" data-toggle="tab" role="tab" aria-controls="images" aria-selected="false" href="#images">Image</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card-body">
-                        <form action="../../includes/forms/add.php" method="post" enctype="multipart/form-data">
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
-                                <div class="form-group">
-                                    <label for="title" class="sr-only">Post Title</label>
-                                    <input type="text" name="title" class="form-control m-1" placeholder="post title">
-                                    <label class="sr-only" for="message">Post message</label>
-                                    <textarea class="form-control m-1" name="message" id="message" rows="3" placeholder="What are you thinking?"></textarea>
-                                </div>
-
-                            </div>
-                            <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">
-                                <div class="form-group">
-                                    <div class="custom-file">
-                                        <input type="file" name="file" class="custom-file-input" id="customFile">
-                                        <label class="custom-file-label" for="customFile">Upload image</label>
-                                    </div>
-                                </div>
-                                <div class="py-4"></div>
-                            </div>
-                        </div>
-                        <div class="btn-toolbar justify-content-between">
-                            <div class="btn-group">
-                                <button type="submit" name="postbtn" class="btn btn-secondary">Create Post </button>
-                            </div>
-                        </div>
-                        </form>
-                    </div>
-                </div>
+                
                 <!-- Post /////-->
 
                 <!--- \\\\\\\Post-->
                 <?php
                 include '../../includes/dbconfiq.php';
-                $query = mysqli_query($con, "SELECT * FROM posts order by id desc");
+                $query = mysqli_query($con, "SELECT * FROM posts WHERE id = '".$_GET['pid']."' order by id desc");
                 while($row = mysqli_fetch_array($query)){
                 ?>
                 <div class="card gedf-card" id="<?php echo $row['id'];?>">
@@ -162,39 +121,23 @@ header("refresh: 0, ../");
                                 <?php }?>
                                 </div>
                             </div>
-                            <div>
-                                <div class="dropdown">
-                                    <?php 
-                                    if($row['user_id'] == $_SESSION['user_id']){?>
-                                    <button class="btn btn-link dropdown-toggle" type="button" id="gedf-drop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fa fa-ellipsis-h text-dark"></i>
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="gedf-drop1">
-                                        <a class="dropdown-item" href="edit.php?pid=<?php echo $row['id'];?>">Edit</a>
-                                        <a class="dropdown-item" href="../../includes/forms/delete.php?pid=<?php echo $row['id']?>">Delete</a>
-                                    </div>
-                                    <?php }else{?>
-                                        <button class="btn btn-dark">Follow</button>
-                                    <?php }?>
-                                </div>
-                            </div>
                         </div>
 
                     </div>
+                    <form action="../../includes/forms/edit.php" method="POST" enctype="multipart/form-data">
                     <div class="card-body">
                         <img class="img-fluid" src="../../includes/forms/img/<?php echo $row['file'];?>">
-                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i><?php echo $row['timer'];?></div>
-                        <a class="card-link" href="#">
-                            <h5 class="card-title text-secondary"><b><?php echo $row['title'];?></b></h5>
-                        </a>
-
-                        <p class="card-text"><?php echo $row['message'];?></p>
+                        <br>
+                        <input type="file" name="file" class="form-control">
+                        <input type="text" class="form-control" name="title" value="<?php echo $row['title'];?>">
+                        <input type="hidden" name="pid" value="<?php echo $_GET['pid'];?>">
+                        <textarea name="message" class="form-control" id="" cols="30" rows="10"><?php echo $row['message'];?></textarea>
                     </div>
                     <div class="card-footer">
-                        <a href="#" class="card-link text-secondary"><i class="fa fa-gittip"></i> Like</a>
-                        <a href="./comments.php?pid=<?php echo $row['id'];?>" class="card-link text-secondary"><i class="fa fa-comment"></i> Comment</a>
-                        <a href="#" class="card-link text-secondary"><i class="fa fa-mail-forward"></i> Share</a>
+                        <button type="submit" name="editpost" class="btn btn-secondary"> Update</button>
+                        <a href="./home.php#<?php echo $_GET['pid'];?>" class="card-link text-secondary">Go Back</a>
                     </div>
+                    </form>
                 </div>
                 <br>
                 <?php  }?>

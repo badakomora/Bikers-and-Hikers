@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../dbconfiq.php';
-if(isset($_POST['postbtn'])){
+if (isset($_POST['postbtn'])) {
 
     $title = $_POST['title'];
     $message = $_POST['message'];
@@ -17,11 +17,10 @@ if(isset($_POST['postbtn'])){
         alert('$msg');
         window.location = '../../frontend/templates/home.php';
     </script>";
-
     } else {
 
         $query = mysqli_query($con, "INSERT INTO posts(user_id, title, message, file, file_ext) VALUES('$user_id', '$title', '$message', '$file', '$ext')");
-        $target = "img/".basename($file);
+        $target = "img/" . basename($file);
         move_uploaded_file($_FILES['file']['tmp_name'], $target);
         if ($query == true) {
 
@@ -41,12 +40,7 @@ if(isset($_POST['postbtn'])){
         </script>";
         }
     }
-
-
-
-
-
-}elseif(isset($_POST['commentbtn'])){
+} elseif (isset($_POST['commentbtn'])) {
 
     $user_id = $_SESSION['user_id'];
     $post_id = $_POST['postid'];
@@ -60,7 +54,6 @@ if(isset($_POST['postbtn'])){
         alert('$msg');
         window.location = '../../frontend/templates/comments.php?pid=$post_id';
     </script>";
-
     } else {
 
         $query = mysqli_query($con, "INSERT INTO comments(post_id, user_id, message) VALUES('$post_id', '$user_id', '$message')");
@@ -82,6 +75,4 @@ if(isset($_POST['postbtn'])){
         </script>";
         }
     }
-    
-
 }

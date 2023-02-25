@@ -13,8 +13,8 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Email</th>
                 <th scope="col">Username</th>
+                <th scope="col">Email</th>
                 <th scope="col">profile</th>
                 <th scope="col">Edit</th>
                 <th scope="col">Delete</th>
@@ -27,21 +27,20 @@
         ?>
             <tbody>
                 <tr>
-                    <form action="includes/edit.php" method="post">
+                    <form action="../../includes/forms/edit.php" method="post">
                         <td scope="row"><?php echo $count; ?></td>
-                        <td><input type="text" name="name" value="<?php echo $row['username']; ?>"></td>
-                        <td><input type="text" name="profile" value="<?php echo $row['email'] ?>"></td>
+                        <td><input type="text" name="username" value="<?php echo $row['username']; ?>"></td>
+                        <td><input type="text" name="email" value="<?php echo $row['email'] ?>"></td>
                         <td><img src="../../includes/forms/img/<?php echo $row['profile']; ?>" width="45" height="45" alt=""></td>
                         <td>
                             <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                            <button class="btn btn-warning" type="submit" name="user">Edit</button>
+                            <button class="btn btn-warning" type="submit" name="edituser">Edit</button>
                         </td>
                     </form>
-
                     <td>
-                        <form action="includes/delete.php" method="post">
+                        <form action="../../includes/forms/delete.php" method="post">
                             <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                            <button type="submit" class="btn btn-danger" name="user">Delete</button>
+                            <button type="submit" class="btn btn-danger" name="deleteuser">Delete</button>
                         </form>
                     </td>
                 </tr>

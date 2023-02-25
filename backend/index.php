@@ -5,35 +5,35 @@ if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $msg = '';
-  
+
     $query = mysqli_query($con, "SELECT * FROM admin where email = '$email'");
     $row = mysqli_fetch_assoc($query);
-    
-    if ($row >= 1) {
-      if (password_verify( $password, $row['password'])) {
-        
-        $_SESSION['user_id'] = $row['id'];
-        $_SESSION['username'] = $row['username'];
-        $_SESSION['email'] = $row['email'];
-  
-        header('refresh: 0, ./templates/users.php');
-        $msg = "Login Access Granted. WELCOME!";
-        echo "<script type='text/javascript'>alert('$msg');</script>";
 
-      } else {
-        header('refresh: 0, ./');
-        $msg = "Login Access Denied. Please use the correct credentials";
-        echo "<script type='text/javascript'>alert('$msg');</script>";
-      }
+    if ($row >= 1) {
+        
+        if (password_verify($password, $row['password'])) {
+
+            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['username'] = $row['username'];
+            $_SESSION['email'] = $row['email'];
+
+            header('refresh: 0, ./templates/users.php');
+            $msg = "Login Access Granted. WELCOME!";
+            echo "<script type='text/javascript'>alert('$msg');</script>";
+        } else {
+            header('refresh: 0, ./');
+            $msg = "Login Access Denied. Please use the correct credentials";
+            echo "<script type='text/javascript'>alert('$msg');</script>";
+        }
+
     } else {
-  
-      header('refresh: 0, ./');
-      $msg = "This user does not exist. Please use the correct credentials";
-      echo "<script type='text/javascript'>alert('$msg');</script>";
+
+        header('refresh: 0, ./');
+        $msg = "This user does not exist. Please use the correct credentials";
+        echo "<script type='text/javascript'>alert('$msg');</script>";
     }
-    
-  }elseif (isset($_POST['Register'])){
-   
+} elseif (isset($_POST['Register'])) {
+
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -41,17 +41,16 @@ if (isset($_POST['login'])) {
 
     $admin = mysqli_query($con, "SELECT * FROM admin WHERE email='$email'");
     $rows = mysqli_num_rows($admin);
-    if($rows >= 1){
+    if ($rows >= 1) {
         $msg = "This user ALready Exists. Please use a different email to sign Up.";
         echo "<script type='text/javascript'>alert('$msg');</script>";
-        header("refresh: 0, ./"); 
-    }else{
+        header("refresh: 0, ./");
+    } else {
         $insert = mysqli_query($con, "INSERT INTO admin(email, username, password) VALUES('$email', '$username', '$password')");
         $msg = "Registration Successful! Procced to sign in.";
         echo "<script type='text/javascript'>alert('$msg');</script>";
-        header("refresh: 0, ./#SignIn"); 
+        header("refresh: 0, ./#SignIn");
     }
-
 }
 ?>
 
@@ -133,4 +132,5 @@ if (isset($_POST['login'])) {
 
 
 </body>
+
 </html>

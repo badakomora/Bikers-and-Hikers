@@ -35,7 +35,7 @@ header("refresh: 0, ../");
                         </ul>
                     </div>
                     <div class="card-body">
-                        <form action="../../includes/forms/action.php" method="post">
+                        <form action="../../includes/forms/add.php" method="post">
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
                                 <div class="form-group">
@@ -87,7 +87,7 @@ If desired, the comments can also be hidden again.
                                     while($row2 = mysqli_fetch_array($query2)){
                                 ?>
                                 <div class="mr-2">
-                                    <img class="rounded-circle" width="45" height="45" src="../forms/img/<?php echo $row2['profile'];?>" alt="">
+                                    <img class="rounded-circle" width="45" height="45" src="../../includes/forms/img/<?php echo $row2['profile'];?>" alt="">
                                 </div>
                                 <div class="ml-2">
                                 

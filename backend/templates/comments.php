@@ -15,7 +15,6 @@
                 <th scope="col">#</th>
                 <th scope="col">Message</th>
                 <th scope="col">comment By</th>
-                <th scope="col">Edit</th>
                 <th scope="col">Delete</th>
             </tr>
         </thead>
@@ -28,24 +27,19 @@
                 <tr>
                     <form action="includes/edit.php" method="post">
                         <td scope="row"><?php echo $count; ?></td>
-                        <td><input type="text" name="message" value="<?php echo $row['message'] ?>"></td>
+                        <td><?php echo $row['message'] ?></td>
                         <?php
                         $query2 = mysqli_query($con, "SELECT * FROM users where id = '".$row['user_id']."'");
                         while ($row1 = mysqli_fetch_array($query2)) {
                         ?>
-                        <td><input type="text" name="profile" value="<?php echo $row1['email'] ?>"></td>
+                        <td><?php echo $row1['email'] ?></td>
                         <?php }?>
-
-                        <td>
-                            <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                            <button class="btn btn-warning" type="submit" name="user">Edit</button>
-                        </td>
                     </form>
 
                     <td>
-                        <form action="includes/delete.php" method="post">
+                    <form action="../../includes/forms/delete.php" method="post">
                             <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                            <button type="submit" class="btn btn-danger" name="user">Delete</button>
+                            <button type="submit" class="btn btn-danger" name="deletecomment">Delete</button>
                         </form>
                     </td>
                 </tr>
