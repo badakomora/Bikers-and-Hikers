@@ -128,7 +128,7 @@ header("refresh: 0, ../");
                     <div class="card-body">
                         <img class="img-fluid" src="../../includes/forms/img/<?php echo $row['file'];?>">
                         <br>
-                        <input type="file" name="file" class="form-control">
+                        <input type="file" name="file" class="form-control" required>
                         <input type="text" class="form-control" name="title" value="<?php echo $row['title'];?>">
                         <input type="hidden" name="pid" value="<?php echo $_GET['pid'];?>">
                         <textarea name="message" class="form-control" id="" cols="30" rows="10"><?php echo $row['message'];?></textarea>
