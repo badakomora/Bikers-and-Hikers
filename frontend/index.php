@@ -1,6 +1,6 @@
 <?php
 session_start();
-include './includes/dbconfiq.php';
+include '../includes/dbconfiq.php';
 if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -87,6 +87,7 @@ if (isset($_POST['login'])) {
             <div class="mt-3">
                 <p class="mb-0  text-center">Don't have an account? <a href="#SignUp" class="text-secondary fw-bold" >Sign
                         Up</a></p>
+                        <p class="text-center"> <a href="../backend/index.php" class="text-secondary fw-bold">Admin only </a></p>
             </div>
         </div>
     </div>
