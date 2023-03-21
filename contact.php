@@ -121,7 +121,7 @@ p, #footer {
     <div class="flex" style="display:flex;justify-content:space-around;">
         <div class="img" style="width:50%">
             <img 
-            src="https://www.vaastbikes.com/media/wysiwyg/vaast/VaastMainCarouselImageV2-1.jpg" 
+            src="https://static.wixstatic.com/media/bc2f1b_f84f9420cb3643f0938b2ea2a0badc67~mv2.jpg/v1/fill/w_640,h_372,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/bc2f1b_f84f9420cb3643f0938b2ea2a0badc67~mv2.jpg" 
             alt="Desenho de uma pessoa vestindo camisa amarela em uma sala com móveis" width="100%">
         </div>
         <div class="p" style="width:50%;">

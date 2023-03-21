@@ -120,7 +120,7 @@ p, #footer {
     <div class="flex" style="display:flex;justify-content:space-around;">
         <div class="img" style="width:50%">
             <img 
-            src="https://www.vaastbikes.com/media/wysiwyg/vaast/VaastMainCarouselImageV2-1.jpg" 
+            src="https://www.vaastbikes.com/media/wysiwyg/Vaast_A1_Lifestyle.jpg" 
             alt="Desenho de uma pessoa vestindo camisa amarela em uma sala com móveis" width="100%">
         </div>
         <div class="p" style="width:50%;">
