@@ -61,11 +61,36 @@ if (isset($_POST['login'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forms</title>
+    <title>Logins and Registrations</title>
+    <link href='https://fonts.googleapis.com/css?family=Dancing Script' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 </head>
 
+<style>
+    .links a{
+    color: black;
+    margin: 10px;
+    text-decoration: none;
+}
+</style>
+
 <body>
+
+<br>
+   <div class="header" style="display:flex;justify-content:space-around;">
+    <div class="logo">
+        <a href="#" class="navbar-brand" style="font-family:'Dancing Script';font-size: 30px;"><b>Bikers & Hikers</b></a>
+    </div>
+    <div class="links ">
+        <a href="../index.php">Home</a>
+        <a href="../contact.php">contacts</a>
+        <a href="../about.php">About</a>
+        <button class="btn btn-secondary">
+        <a href="../frontend/" class="text-white">Sign in</a>
+        </button>
+    </div>
+   </div>
+   <br><br>
 
     <div class="vh-100 d-flex justify-content-center align-items-center" id="SignIn">
         <div class="col-md-5 p-5 shadow-sm border rounded-5 border-secondary bg-white">
