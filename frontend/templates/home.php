@@ -51,11 +51,11 @@ header("refresh: 0, ../");
        
 <nav class="navbar navbar-light bg-white">
         <a href="#" class="navbar-brand" style="font-family:'Dancing Script';font-size: 30px;"><b>Bikers & Hikers</b></a>
-        <form class="form-inline">
+        <form class="form-inline" action="" method="POST">
             <div class="input-group">
-                <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <input type="text" name="search" placeholder="Search" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+                    <button class="btn btn-outline-secondary" type="submit" name="submit" id="button-addon2">
                         <i class="fa fa-search"></i>
                     </button>
                 </div>
@@ -137,6 +137,78 @@ header("refresh: 0, ../");
                 <!--- \\\\\\\Post-->
                 <?php
                 include '../../includes/dbconfiq.php';
+                if (isset($_POST['submit'])){
+                 $search = $_POST['search'];
+                $query = mysqli_query($con, "SELECT * FROM posts where (title LIKE '%" . $_POST["search"] . "%') OR (message LIKE '%" . $_POST["search"] . "%')");
+                while($row = mysqli_fetch_array($query)){
+                ?>
+                <div class="card gedf-card" id="<?php echo $row['id'];?>">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <?php
+                                    $query2 = mysqli_query($con, "SELECT * 
+                                    FROM users 
+                                    WHERE users.id = '".$row['user_id']."'");
+                                    while($row2 = mysqli_fetch_array($query2)){
+                                ?>
+                                <div class="mr-2">
+                                    <img class="rounded-circle" width="45" height="45" src="../../includes/forms/img/<?php echo $row2['profile'];?>" alt="">
+                                </div>
+                                <div class="ml-2">
+                                
+
+                                    <div class="h5 m-0"><?php echo $row2['username'];?></div>
+                                    <div class="h7 text-muted"><?php echo $row2['email'];?></div>
+
+                                <?php }?>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="dropdown">
+                                    <?php 
+                                    if($row['user_id'] == $_SESSION['user_id']){?>
+                                    <button class="btn btn-link dropdown-toggle" type="button" id="gedf-drop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-ellipsis-h text-dark"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="gedf-drop1">
+                                        <a class="dropdown-item" href="edit.php?pid=<?php echo $row['id'];?>">Edit</a>
+                                        <a class="dropdown-item" href="../../includes/forms/delete.php?pid=<?php echo $row['id']?>">Delete</a>
+                                    </div>
+                                    <?php }else{?>
+                                        <button class="btn btn-dark">Follow</button>
+                                    <?php }?>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+                        <img class="img-fluid" src="../../includes/forms/img/<?php echo $row['file'];?>">
+                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i><?php echo $row['timer'];?></div>
+                        <a class="card-link" href="#">
+                            <h5 class="card-title text-secondary"><b><?php echo $row['title'];?></b></h5>
+                        </a>
+
+                        <p class="card-text"><?php echo $row['message'];?></p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="card-link text-secondary"><i class="fa fa-gittip"></i> Like</a>
+                        <a href="./comments.php?pid=<?php echo $row['id'];?>" class="card-link text-secondary"><i class="fa fa-comment"></i> Comment</a>
+                        <a href="#" class="card-link text-secondary"><i class="fa fa-mail-forward"></i> Share</a>
+                    </div>
+                </div>
+                <br>
+                <?php  }?>
+
+                
+                <!-- Post /////-->
+
+
+            </div>
+            <?php
+                }else{
+                    
                 $query = mysqli_query($con, "SELECT * FROM posts order by id desc");
                 while($row = mysqli_fetch_array($query)){
                 ?>
@@ -203,8 +275,12 @@ header("refresh: 0, ../");
                 <!-- Post /////-->
 
 
-
             </div>
+            <?php
+             }
+             ?>
+
+                
             <div class="col-md-3">
                 <div class="card gedf-card">
                     <div class="card-body">
